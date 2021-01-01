@@ -2,7 +2,7 @@ package com.syrusit.syrusapplication.services;
 
 import com.syrusit.syrusapplication.entity.Employee;
 
-import com.syrusit.syrusapplication.repositary.entity.EmployeeRepository;
+import com.syrusit.syrusapplication.repositary.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.save(g);
 
     }
-
     @Override
     public void update(Employee g) {
         employeeRepository.save(g);
@@ -41,9 +40,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public Employee findByNIC(String nic) {
+        return null;
+    }
+    @Override
     public List<Employee> findByStatus(boolean status) {
         return null;
     }
-
-
 }

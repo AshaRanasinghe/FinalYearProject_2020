@@ -53,35 +53,31 @@ public class Employee {
     private String etf;
     @Column(name = "status")
     private boolean status;
+
     //one to many relationship - many side
     @ManyToOne
     @JoinColumn(name = "gender_id")
     private Gender genderId;
 
-    //onetomany mapping with user , generated getters and setter also for new property "userList"
+    //onetomany mapping with SystemUser , generated getters and setter also for new property "systemUserList"
     @OneToMany(mappedBy = "employee")
-    private List<user> userList;
+    private List<SystemUser> systemUserList;
+
+    private transient String fullName;
 
     public Gender getGenderId() {
         return genderId;
     }
 
-
-
     public void setGenderId(Gender genderId) {
         this.genderId = genderId;
     }
-
-
-
 
     public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
+    public void setStatus(boolean status) { this.status = status;}
 
 
 
@@ -216,7 +212,24 @@ public class Employee {
     public void setEtf(String etf) {
         this.etf = etf;
     }
-//...............................................................................................................
+
+    public List<SystemUser> getSystemUserList() {
+        return systemUserList;
+    }
+
+    public void setSystemUserList(List<SystemUser> systemUserList) {
+        this.systemUserList = systemUserList;
+    }
+
+    public String getFullName() {
+        return firstName+" "+lastName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = firstName+" "+lastName;
+    }
+
+    //...............................................................................................................
     //constructor method
 
     public Employee(Integer id, String firstName, String lastName, String nic, String mobile, String telephone, Date dob, String addressLine1, String addressline2, String city, byte[] image, String email, String designation, String gender, String epf, String etf) {

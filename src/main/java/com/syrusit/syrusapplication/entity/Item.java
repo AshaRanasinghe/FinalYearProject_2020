@@ -1,6 +1,5 @@
 package com.syrusit.syrusapplication.entity;
 
-
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import javax.persistence.*;
@@ -14,6 +13,10 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private Integer id;
+    @Column(name="maincat")
+    private String maincat;
+    @Column(name="subcat")
+    private String subcat;
     @Column(name="number")
     private String number;
     @Column(name="name")
@@ -24,9 +27,19 @@ public class Item {
     private Double SellingPrice;
     @Column(name="buyingPrice")
     private Double buyingPrice;
+    @Column(name = "status")
+    private boolean status;
+
+    @ManyToOne
+    @JoinColumn(name="categoryObj")
+    private Category categoryObj;
 
     @OneToMany(mappedBy="itemObj")
     private List<PurchaseItem> purchaseItemList;
+
+    @ManyToOne
+    @JoinColumn(name="subCategory")
+    private SubCategory subCategory;
 
     public Integer getId() {
         return id;
@@ -34,6 +47,22 @@ public class Item {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getMaincat() {
+        return maincat;
+    }
+
+    public void setMaincat(String maincat) {
+        this.maincat = maincat;
+    }
+
+    public String getSubcat() {
+        return subcat;
+    }
+
+    public void setSubcat(String subcat) {
+        this.subcat = subcat;
     }
 
     public String getNumber() {
@@ -76,12 +105,36 @@ public class Item {
         this.buyingPrice = buyingPrice;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public Category getCategoryObj() {
+        return categoryObj;
+    }
+
+    public void setCategoryObj(Category categoryObj) {
+        this.categoryObj = categoryObj;
+    }
+
     public List<PurchaseItem> getPurchaseItemList() {
         return purchaseItemList;
     }
 
     public void setPurchaseItemList(List<PurchaseItem> purchaseItemList) {
         this.purchaseItemList = purchaseItemList;
+    }
+
+    public SubCategory getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(SubCategory subCategory) {
+        this.subCategory = subCategory;
     }
 
     public Item(){}

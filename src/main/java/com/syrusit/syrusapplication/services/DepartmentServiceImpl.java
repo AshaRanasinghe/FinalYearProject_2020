@@ -1,8 +1,7 @@
 package com.syrusit.syrusapplication.services;
 
 import com.syrusit.syrusapplication.entity.Department;
-import com.syrusit.syrusapplication.repositary.entity.DepartmentRepository;
-import com.syrusit.syrusapplication.repositary.entity.GenderRepository;
+import com.syrusit.syrusapplication.repositary.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

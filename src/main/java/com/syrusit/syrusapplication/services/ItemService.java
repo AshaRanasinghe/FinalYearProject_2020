@@ -2,18 +2,25 @@ package com.syrusit.syrusapplication.services;
 
 
 import com.syrusit.syrusapplication.entity.Item;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface ItemService {
 
-    public void save(Item g);
+    public void save(Item i);
 
-    public void update(Item g);
+    public void update(Item i);
 
-    public void delete(Item g);
+    public void delete(Item i);
 
-    public List<Item> findAll();
+    public List<Item>findAll();
 
-    public Item findById(Integer id);
+    public Item findById(int id);
+
+    public Item findByItemName(String name);
+
+    public Item findByStatus(boolean status);
+
 }

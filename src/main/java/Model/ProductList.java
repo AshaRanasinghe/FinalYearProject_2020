@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductList {
@@ -7,7 +8,9 @@ public class ProductList {
     private String purchaseOrderNo;
     private List<Product> productList;
 
-    public ProductList(){}
+    public ProductList(){
+        productList = new ArrayList();
+    }
 
     public String getPurchaseOrderNo() {
         return purchaseOrderNo;
@@ -27,10 +30,10 @@ public class ProductList {
 
     //search the name which is in product list
     public Product findByName(String name){
-
-        for(Product p:productList){
+        for (Product p : productList){
             if(p.getItem().getName().equals(name))
                 return p;
+
         }
         return null;
     }

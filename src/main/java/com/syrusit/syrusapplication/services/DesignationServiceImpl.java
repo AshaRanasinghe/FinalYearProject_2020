@@ -1,7 +1,7 @@
 package com.syrusit.syrusapplication.services;
 
 import com.syrusit.syrusapplication.entity.Designation;
-import com.syrusit.syrusapplication.repositary.entity.DesignationRepository;
+import com.syrusit.syrusapplication.repositary.DesignationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

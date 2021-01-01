@@ -24,6 +24,7 @@ public class EmployeeController {
 
     @Autowired
     private GenderService genderService;
+
     @RequestMapping(value = {"/newemployee"}, method = RequestMethod.GET)
     public String loadEmployee(ModelMap model) {
 
@@ -39,11 +40,11 @@ public class EmployeeController {
     @RequestMapping(value = {"/newemployee"}, method = RequestMethod.POST)
     public String saveEmployee(@Valid Employee employee, BindingResult bindingResult, ModelMap model){
 
-        //checking if the NIC is already existing or not
+      //  checking if the NIC is already existing or not
 
-        //Employee valEmp = employeeService.findByNic(employee.getNic());
+        Employee valEmp = employeeService.findByNIC(employee.getNic());
 
-   //     System.out.println(valEmp);
+       System.out.println(valEmp);
 
         //validation
         if (bindingResult.hasErrors()){
@@ -89,7 +90,6 @@ public class EmployeeController {
         int empId = Integer.parseInt(id);
 
         Employee empObj = employeeService.findById(empId);
-
         empObj.setStatus(false);
 
         employeeService.update(empObj);
@@ -97,5 +97,4 @@ public class EmployeeController {
         model.addAttribute("employeeList",empList);
         return "EmployeeView";
     }
-
 }

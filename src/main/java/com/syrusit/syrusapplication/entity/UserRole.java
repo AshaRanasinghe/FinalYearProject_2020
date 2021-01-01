@@ -1,7 +1,5 @@
 package com.syrusit.syrusapplication.entity;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,16 +14,16 @@ public class UserRole {
     @Column(name = "name")
     private String name;
 
-    //onetomany relationship from userrole to user
+    //onetomany relationship from userrole to SystemUser
     @OneToMany
-    private List<user> userList;
+    private List<SystemUser> systemUserList;
 
-   // public List<user> getUserList() {
-        //return userList;
+   // public List<SystemUser> getUserList() {
+        //return systemUserList;
    // }
 
-    public void setUserList(List<user> userList) {
-        this.userList = userList;
+    public void setSystemUserList(List<SystemUser> systemUserList) {
+        this.systemUserList = systemUserList;
     }
 
     public UserRole(){}

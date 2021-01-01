@@ -1,19 +1,18 @@
 package com.syrusit.syrusapplication.services;
 
-import com.syrusit.syrusapplication.entity.Gender;
-import com.syrusit.syrusapplication.entity.user;
+import com.syrusit.syrusapplication.entity.SystemUser;
 
 import java.util.List;
 
 public interface UserService {
 
-    public void save(user g);
+    public void save(SystemUser g);
 
-    public void update(user g);
+    public void update(SystemUser g);
 
-    public void delete(user g);
+    public void delete(SystemUser g);
 
-    public List<user> findAll();
+    public List<SystemUser> findAll();
 
-    public user findByUserName(String userName);
+    public SystemUser findByUserName(String userName);
 }

@@ -35,4 +35,12 @@ public class Product {
     public void setLinetotal(Double linetotal) {
         this.linetotal = item.getSellingPrice()* quantity;
     }
+
+    public Double getLineTotal(){
+        return quantity * item.getSellingPrice();
+    }
+
+    public void setLineTotal(Double lineTotal){
+        this.linetotal = quantity * item.getSellingPrice();
+    }
 }

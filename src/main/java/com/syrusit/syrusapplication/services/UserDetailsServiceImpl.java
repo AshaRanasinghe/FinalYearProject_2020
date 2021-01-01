@@ -1,9 +1,10 @@
 package com.syrusit.syrusapplication.services;
 
-import com.syrusit.syrusapplication.entity.UserRole;
-import com.syrusit.syrusapplication.entity.user;
-import com.syrusit.syrusapplication.repositary.entity.UserRepository;
+import com.syrusit.syrusapplication.entity.SystemUser;
+import com.syrusit.syrusapplication.repositary.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,11 +22,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       user usr = userRepository.findByUsername(username);
+       SystemUser usr = userRepository.findByUsername(username);
        if(usr==null)
     System.out.println("User not found");
 
-       UserDetails uDetails = new User(usr.getUsername(),usr.getUsername(),null);
+       List<GrantedAuthority> roleList = new ArrayList();
+
+       roleList.add(new SimpleGrantedAuthority(usr.getRole().getName()));
+
+       UserDetails uDetails = new User(usr.getUsername(),usr.getPassword(),roleList);
 
         return uDetails;
 
